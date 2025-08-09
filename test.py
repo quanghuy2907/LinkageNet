@@ -32,12 +32,11 @@ test_loader = DataLoader(test_dataset, batch_size=TEST_CONFIG['batch_size'], shu
 model = LinkageNet(d_model=MODEL_CONFIG['d_model'])
 model = model.to(device=device)
 
-weight_path = './weights/snu_20250805_154016/model_weights.pth'
-model.load_state_dict(torch.load(weight_path, weights_only=True))
+model.load_state_dict(torch.load(TEST_CONFIG['weight_path', weights_only=True))
 model.eval()
 
 output_processing_tool = OutputProcessing(test_dataset.dataset_config, device)
-eval_tool = Evaluation(test_dataset.dataset_config, threshold='loose')
+eval_tool = Evaluation(test_dataset.dataset_config, threshold=TEST_CONFIG['evaluation_mode'])
 
 inf_time = 0
 
